@@ -1,0 +1,280 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "fontFamily": {
+        "inter": [
+          "Inter",
+          "sans-serif"
+        ],
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "colors": {
+        "flamboyant": {
+          "red": "#c8102e",
+          "red-dark": "#a00d26",
+          "gray": "#f8f9fa",
+          "neutral": "#6c757d"
+        }
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-flamboyant-gray font-inter">
+
+<!-- Header -->
+<header id="header" class="bg-white shadow-lg border-b-2 border-flamboyant-red">
+    <div class="px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-flamboyant-red p-3 rounded-xl">
+                        <i class="fa-solid fa-file-contract text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Gestão de Contratos</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3 bg-gray-50 px-4 py-2 rounded-xl">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-9 h-9 rounded-full border-2 border-flamboyant-red">
+                    <div class="text-left">
+                        <span class="text-sm font-semibold text-gray-800">João Silva</span>
+                        <p class="text-xs text-flamboyant-neutral">Administrador</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main id="main-content" class="p-6">
+    <!-- Filters Section -->
+    <section id="filters-section" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-end">
+            <div id="coligada-filter">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Coligada</label>
+                <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-flamboyant-red focus:border-flamboyant-red transition-all">
+                    <option>Todas as Coligadas</option>
+                    <option>Matriz</option>
+                    <option>Filial SP</option>
+                    <option>Filial RJ</option>
+                </select>
+            </div>
+            
+            <div id="centro-custo-filter">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Centro de Custo</label>
+                <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-flamboyant-red focus:border-flamboyant-red transition-all">
+                    <option>Todos os Centros</option>
+                    <option>Administrativo</option>
+                    <option>Operacional</option>
+                    <option>Vendas</option>
+                </select>
+            </div>
+            
+            <div id="search-filter" class="lg:col-span-2">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Buscar Contrato</label>
+                <div class="flex">
+                    <input type="text" placeholder="Buscar por Fornecedor, Código ou Nome do Contrato" class="flex-1 px-4 py-3 border-2 border-gray-200 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-flamboyant-red focus:border-flamboyant-red transition-all">
+                    <button class="px-6 py-3 bg-flamboyant-red text-white rounded-r-xl hover:bg-flamboyant-red-dark focus:outline-none focus:ring-2 focus:ring-flamboyant-red transition-all">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contracts Table -->
+    <section id="contracts-table-section" class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-flamboyant-red to-flamboyant-red-dark">
+            <h2 class="text-xl font-bold text-white">Lista de Contratos</h2>
+            <p class="text-red-100 mt-1">Gerencie e visualize todos os contratos da empresa</p>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead id="table-header" class="bg-gray-50 sticky top-0">
+                    <tr>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Coligada</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Filial</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Centro de Custo</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Natureza Orçamentária</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Código</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Status</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">CPF/CNPJ</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Fornecedor</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Nome do Contrato</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Início Vigência</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Final Vigência</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Mês Base</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Índice</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Faturado</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">A Faturar</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b-2 border-flamboyant-red">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body" class="bg-white divide-y divide-gray-100">
+                    <tr id="contract-row-1" class="hover:bg-red-50 transition-colors">
+                        <td class="px-4 py-4 text-sm font-medium text-gray-900">Matriz</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">001</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Administrativo</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Despesa</td>
+                        <td class="px-4 py-4 text-sm font-bold text-flamboyant-red">CT-2024-001</td>
+                        <td class="px-4 py-4">
+                            <span class="inline-flex px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-800">Ativo</span>
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-700">12.345.678/0001-90</td>
+                        <td class="px-4 py-4 text-sm font-medium text-gray-900">Tech Solutions Ltda</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Serviços de TI</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">01/01/2024</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">31/12/2024</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Janeiro</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">IPCA</td>
+                        <td class="px-4 py-4 text-sm font-bold text-green-600">R$ 125.000,00</td>
+                        <td class="px-4 py-4 text-sm font-bold text-flamboyant-red">R$ 75.000,00</td>
+                        <td class="px-4 py-4">
+                            <div class="flex space-x-3">
+                                <button class="p-2 text-flamboyant-red hover:bg-red-50 rounded-lg transition-all" title="Visualizar Documento GED">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Visualizar Estrutura de Pastas" onclick="openFolderModal()">
+                                    <i class="fa-solid fa-folder"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="contract-row-2" class="hover:bg-red-50 transition-colors">
+                        <td class="px-4 py-4 text-sm font-medium text-gray-900">Filial SP</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">002</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Operacional</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Receita</td>
+                        <td class="px-4 py-4 text-sm font-bold text-flamboyant-red">CT-2024-002</td>
+                        <td class="px-4 py-4">
+                            <span class="inline-flex px-3 py-1 text-xs font-bold rounded-full bg-yellow-100 text-yellow-800">Pendente</span>
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-700">98.765.432/0001-10</td>
+                        <td class="px-4 py-4 text-sm font-medium text-gray-900">Global Services S.A.</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Manutenção Predial</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">15/02/2024</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">14/02/2025</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">Fevereiro</td>
+                        <td class="px-4 py-4 text-sm text-gray-700">IGP-M</td>
+                        <td class="px-4 py-4 text-sm font-bold text-green-600">R$ 89.500,00</td>
+                        <td class="px-4 py-4 text-sm font-bold text-flamboyant-red">R$ 110.500,00</td>
+                        <td class="px-4 py-4">
+                            <div class="flex space-x-3">
+                                <button class="p-2 text-flamboyant-red hover:bg-red-50 rounded-lg transition-all" title="Visualizar Documento GED">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Visualizar Estrutura de Pastas" onclick="openFolderModal()">
+                                    <i class="fa-solid fa-folder"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="table-pagination" class="px-6 py-4 border-t border-gray-100 flex items-center justify-between bg-gray-50">
+            <div class="text-sm font-medium text-gray-700">
+                Mostrando 1-2 de 45 contratos
+            </div>
+            <div class="flex space-x-2">
+                <button class="px-4 py-2 border-2 border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-100 transition-all">Anterior</button>
+                <button class="px-4 py-2 bg-flamboyant-red text-white rounded-lg text-sm font-bold">1</button>
+                <button class="px-4 py-2 border-2 border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-all">2</button>
+                <button class="px-4 py-2 border-2 border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-all">3</button>
+                <button class="px-4 py-2 border-2 border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-all">Próximo</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Folder Modal -->
+<div id="folder-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
+        <div class="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-flamboyant-red to-flamboyant-red-dark">
+            <h3 class="text-lg font-bold text-white">Estrutura de Pastas - CT-2024-001</h3>
+            <button onclick="closeFolderModal()" class="text-red-100 hover:text-white p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto">
+            <div class="space-y-2">
+                <div class="flex items-center space-x-3 p-3 hover:bg-red-50 rounded-xl cursor-pointer transition-all">
+                    <i class="fa-solid fa-folder text-flamboyant-red text-lg"></i>
+                    <span class="text-sm font-medium text-gray-900">01 - Documentos Contratuais</span>
+                </div>
+                <div class="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-xl cursor-pointer ml-6 transition-all">
+                    <i class="fa-solid fa-file-pdf text-red-500"></i>
+                    <span class="text-sm text-gray-700">Contrato Principal.pdf</span>
+                </div>
+                <div class="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-xl cursor-pointer ml-6 transition-all">
+                    <i class="fa-solid fa-file-pdf text-red-500"></i>
+                    <span class="text-sm text-gray-700">Aditivos.pdf</span>
+                </div>
+                <div class="flex items-center space-x-3 p-3 hover:bg-red-50 rounded-xl cursor-pointer transition-all">
+                    <i class="fa-solid fa-folder text-flamboyant-red text-lg"></i>
+                    <span class="text-sm font-medium text-gray-900">02 - Notas Fiscais</span>
+                </div>
+                <div class="flex items-center space-x-3 p-3 hover:bg-red-50 rounded-xl cursor-pointer transition-all">
+                    <i class="fa-solid fa-folder text-flamboyant-red text-lg"></i>
+                    <span class="text-sm font-medium text-gray-900">03 - Correspondências</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openFolderModal() {
+    document.getElementById('folder-modal').classList.remove('hidden');
+}
+
+function closeFolderModal() {
+    document.getElementById('folder-modal').classList.add('hidden');
+}
+
+document.getElementById('folder-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeFolderModal();
+    }
+});
+</script>
+
+
+</body></html>
