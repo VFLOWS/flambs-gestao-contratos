@@ -298,84 +298,78 @@
     </div>
 </div>
 
-<!-- Retention Modal -->
-<div id="retention-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50 flex items-center justify-center">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl mx-4">
-        <div class="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-flamboyant-red to-flamboyant-red-dark">
-            <h3 class="text-lg font-bold text-white">Retenções do Contrato</h3>
-            <button onclick="closeRetentionsModal()" class="text-red-100 hover:text-white p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all">
-                <i class="fa-solid fa-times"></i>
-            </button>
-        </div>
+<!-- Retention Modal com scroll horizontal funcional -->
+<div id="retention-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center px-2">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-screen-lg max-h-[90vh] overflow-y-auto">
+      
+      <!-- Cabeçalho -->
+      <div class="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-flamboyant-red to-flamboyant-red-dark">
+        <h3 class="text-lg font-bold text-white">Retenções do Contrato</h3>
+        <button onclick="closeRetentionsModal()" class="text-red-100 hover:text-white p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+  
+      <!-- Corpo -->
+      <div class="p-6">
         
-        <div class="p-6">
-            <div class="mb-6">
-                <h4 class="text-sm font-semibold text-gray-700 mb-2">Contrato: CT-2024-001</h4>
-                <p class="text-sm text-gray-600">Tech Solutions Ltda</p>
-            </div>
-            
-            <div class="table-container">
-                <div class="min-w-[1600px]">
-                    <table class="w-full">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CODCON</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CONTRATO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CODTMV</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">EMISSAO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">MOVIMENTO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">IDMOV</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CODCFO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">FORNECEDOR</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CODCUSTO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">NOME CUSTO</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">CODNATU</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">NATUREZA</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">VLR_NOTA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-4 py-3 text-sm text-gray-700">1</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">2021/000016</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">1.2.02</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">03/12/2021</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">Nota Fiscal de Serviço</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">819438</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">085241</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">VOLGA ENGENHARIA INDUSTRIAL</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">20.07.003</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">ELETRICA</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">12.01.008.005</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">INVESTIMENTOS EM INSTALACOES ELETRICAS</td>
-                                <td class="px-4 py-3 text-sm font-bold text-flamboyant-red">R$ 30.000,00</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 text-sm text-gray-700"></td>
-                                <td class="px-4 py-3 text-sm text-gray-700"></td>
-                                <td class="px-4 py-3 text-sm text-gray-700"></td>
-                                <td class="px-4 py-3 text-sm text-gray-700">05/06/2024</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">Nota Fiscal de Serviço</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">1025942</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">085241</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">VOLGA ENGENHARIA INDUSTRIAL</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">20.07.003</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">ELETRICA</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">12.01.008.005</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">INVESTIMENTOS EM INSTALACOES ELETRICAS</td>
-                                <td class="px-4 py-3 text-sm font-bold text-flamboyant-red">R$ 10.442,10</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 text-sm text-gray-700" colspan="12">Total:</td>
-                                <td class="px-4 py-3 text-sm font-bold text-flamboyant-red">R$ 40.442,10</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- Info do Contrato -->
+        <div class="mb-6">
+          <h4 class="text-sm font-semibold text-gray-700 mb-1">Contrato: CT-2024-001</h4>
+          <p class="text-sm text-gray-600">Tech Solutions Ltda</p>
         </div>
+  
+        <!-- Tabela com scroll horizontal -->
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-[1200px]">
+            <table class="table-auto text-sm w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Data Emissão</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Movimento</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">ID Movimento</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Fornecedor</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Centro de Custo</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Natureza</th>
+                  <th class="px-4 py-3 text-left font-bold text-gray-600 tracking-wider">Valor Nota</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 py-3 text-gray-700">03/12/2021</td>
+                  <td class="px-4 py-3 text-gray-700">Nota Fiscal de Serviço</td>
+                  <td class="px-4 py-3 text-gray-700">819438</td>
+                  <td class="px-4 py-3 text-gray-700">VOLGA ENGENHARIA INDUSTRIAL</td>
+                  <td class="px-4 py-3 text-gray-700">ELETRICA</td>
+                  <td class="px-4 py-3 text-gray-700">INVESTIMENTOS EM INSTALACOES ELETRICAS</td>
+                  <td class="px-4 py-3 font-bold text-flamboyant-red">R$ 30.000,00</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-gray-700">05/06/2024</td>
+                  <td class="px-4 py-3 text-gray-700">Nota Fiscal de Serviço</td>
+                  <td class="px-4 py-3 text-gray-700">1025942</td>
+                  <td class="px-4 py-3 text-gray-700">VOLGA ENGENHARIA INDUSTRIAL</td>
+                  <td class="px-4 py-3 text-gray-700">ELETRICA</td>
+                  <td class="px-4 py-3 text-gray-700">INVESTIMENTOS EM INSTALACOES ELETRICAS</td>
+                  <td class="px-4 py-3 font-bold text-flamboyant-red">R$ 10.442,10</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 text-gray-700" colspan="6">Total:</td>
+                  <td class="px-4 py-3 font-bold text-flamboyant-red">R$ 40.442,10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+      </div>
     </div>
-</div>
+  </div>
+  
+  
+
+  
+  
 
 <script>
 function openFolderModal() {
